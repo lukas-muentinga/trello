@@ -1,0 +1,2 @@
+APP_KEY = ''
+API_TOKEN = ''
