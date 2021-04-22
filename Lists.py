@@ -2,7 +2,6 @@
 
 
 from .Trello import Trello
-from .Boards import Board
 from typing import Union
 
 
@@ -27,7 +26,7 @@ class List:
         # TODO: implement
         pass
 
-    def move_to_board(board: Union[Board, str]):
+    def move_to_board():
         # TODO: implement
         pass
 
