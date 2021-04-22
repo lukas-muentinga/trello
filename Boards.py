@@ -24,7 +24,7 @@ def create_board(trello: Trello,
               invitation_rights: str = 'members',
               allow_self_join: bool = True,
               enable_card_covers: bool = True,
-              background: str = 'sky',
+              background: str = 'grey',
               card_aging_type: str = 'regular') -> dict:
 
     """Creates a new Trello-board
@@ -50,10 +50,13 @@ def create_board(trello: Trello,
             Valid values: members, admins.
         allow_self_join (bool, optional): Whether members can join the board themselves or have to be invited. Defaults to True.
         enable_card_covers (bool, optional): Whether card covers are enabled. Defaults to True.
-        background (str, optional): Background of the board. Defaults to 'sky'.
+        background (str, optional): Background of the board. Defaults to 'grey'.
             Valid values: bule, orange, green, red, purple, pink, lime, sky, grey.
         card_aging_type (str, optional): Type of card aging. Defaults to 'regular'.
             Valid values: regular, pirate.
+
+    Returns:
+        dict: Board parameters as dictionary
     """
 
     json = {
@@ -75,9 +78,9 @@ def create_board(trello: Trello,
         'prefs_cardAging': card_aging_type
     }
 
-    json = {v for k, v in json.items() if v is not None}
+    json = {k: v for k, v in json.items() if v is not None}
 
-    return trello.post('boards', data=json).json()
+    return trello.post('boards', json=json).json()
 
 
 def delete_board():
