@@ -8,15 +8,22 @@ from typing import Union
 class List:
 
     __id: str
+    __name: str
     __trello: Trello
 
-    def __init__(self, trello: Trello, id: str):
+    def __init__(self, trello: Trello, def: dict):
         """ List object for lists in Trello boards.
 
         Args:
             trello (Trello): Session to trello
             id (str): Id of the list
         """
+        self.__trello = trello
+        self.__id = def['id']
+        self.__name = def['name']
+
+    def name(self):
+        return self.__name
 
     def update():
         # TODO: implement
