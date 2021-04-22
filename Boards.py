@@ -19,7 +19,7 @@ class Board:
             id (str): Id of the board
         """
         self.__id = id
-        self.__trello = Trello
+        self.__trello = Trello()
 
     def delete():
         # TODO: implement
