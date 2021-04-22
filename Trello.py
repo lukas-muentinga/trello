@@ -1,7 +1,7 @@
 from requests import Session
 from requests_oauthlib import OAuth1
 
-import config
+from . import config
 
 url = 'https://api.trello.com/1/'
 
