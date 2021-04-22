@@ -19,7 +19,7 @@ class Board:
             id (str): Id of the board
         """
         self.__id = id
-        self.__trello = Trello
+        self.__trello = Trello()
 
     def delete():
         # TODO: implement
@@ -107,7 +107,7 @@ class Board:
             'pos': position
         }
 
-        result = self.__trello.post(f'boards/{self.__id}/lists')
+        result = self.__trello.post(f'boards/{self.__id}/lists', json=json).json()
         return List(self.__trello, result['id'])
 
     def get_card():
