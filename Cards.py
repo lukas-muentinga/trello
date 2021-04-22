@@ -11,9 +11,9 @@ class Card:
     __trello: Trello
     __id: str
 
-    def __init__(self, trello: Trello, def: dict):
+    def __init__(self, trello: Trello, definition: dict):
         self.__trello = trello
-        self.__id = def['id']
+        self.__id = definition['id']
 
     def update():
         # TODO: implement
@@ -207,7 +207,7 @@ def create_card(trello: Trello,
         'idList': list_id,
         'desc': description,
         'pos': position,
-        'due': due,
+        'due': f'{due.year}-{due.month}-{due.day}' if due else None,
         'dueComplete': due_complete,
         'idMembers': ','.join(member_ids),
         'idLabels': ','.join(label_ids),
