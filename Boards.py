@@ -5,9 +5,127 @@ from .Trello import Trello
 from typing import Union
 
 
+class Board:
+
+    __id: str
+    __trello: Trello
+
+    def __init__(self, trello: Trello, id: str):
+        self.__id = id
+        self.__trello = Trello
+
+    def delete():
+        # TODO: implement
+        pass
+
+    def get_fields():
+        # TODO: implement
+        pass
+
+    def get_actions():
+        # TODO: implement
+        pass
+
+    def get_memberships():
+        # TODO: implement
+        pass
+
+    def get_members():
+        # TODO: implement
+        pass
+
+    def add_member():
+        # TODO: implement
+        pass
+
+    def remove_member():
+        # TODO: implement
+        pass
+
+    def update_member_membership():
+        # TODO: implement
+        pass
+
+    def email_invite_member():
+        # TODO: implement
+        pass
+
+    def get_lists(self,
+                  board_id: str,
+                  cards: str = None,
+                  card_fields: Union[str, list] = 'all',
+                  filter: str = 'all',
+                  fields: Union[str, list] = 'all') -> dict:
+        """ Gets all lists from a board
+
+        Args:
+            trello (Trello): Session to trello
+            board_id (str): board-id
+            cards (str, optional): Filter for cards. Either 'all', 'closed', 'none' or 'open'. Defaults to None.
+            card_fields (Union[str, list], optional): Which card fields to return. Either 'all' or list. Defaults to 'all'.
+            filter (str, optional): Filter for lists. Either 'all', 'closed', 'none' or 'open'. Defaults to 'all'.
+            fields (Union[str, list], optional): [description]. Defaults to 'all'.
+
+        Returns:
+            dict: [description] TODO
+        """
+        data = {
+            'cards': cards,
+            'card_fields': card_fields,
+            'filter': filter,
+            'fields': fields
+        }
+        return self.__trello.get(f'boards/{board_id}/lists', json=data).json()
+
+    def get_lists_filtered():
+        # TODO: implement
+        pass
+
+    def create_list(self,
+                    ):
+        # TODO: implement
+        pass
+
+    def get_card():
+        # TODO: implement
+        pass
+
+    def get_cards():
+        # TODO: implement
+        pass
+
+    def get_cards_filtered():
+        # TODO: implement
+        pass
+
+    def get_stars():
+        # TODO: implement
+        pass
+
+    def get_checklist():
+        # TODO: implement
+        pass
+
+    def get_custom_fields():
+        # TODO: implement
+        pass
+
+    def get_labels():
+        # TODO: implement
+        pass
+
+    def create_label():
+        # TODO: implement
+        pass
+
+
+######## STATIC METHODS #################################################
+
+
 def get_board():
     # TODO: implement
     pass
+
 
 def create_board(trello: Trello,
               name: str,
@@ -25,7 +143,7 @@ def create_board(trello: Trello,
               allow_self_join: bool = True,
               enable_card_covers: bool = True,
               background: str = 'grey',
-              card_aging_type: str = 'regular') -> dict:
+              card_aging_type: str = 'regular') -> Board:
 
     """Creates a new Trello-board
 
@@ -56,7 +174,7 @@ def create_board(trello: Trello,
             Valid values: regular, pirate.
 
     Returns:
-        dict: Board parameters as dictionary
+        Board: Board object for further usage
     """
 
     json = {
@@ -80,129 +198,5 @@ def create_board(trello: Trello,
 
     json = {k: v for k, v in json.items() if v is not None}
 
-    return trello.post('boards', json=json).json()
-
-
-def delete_board():
-    # TODO: implement
-    pass
-
-
-def get_board_field():
-    # TODO: implement
-    pass
-
-
-def get_board_actions():
-    # TODO: implement
-    pass
-
-
-def get_board_memberships():
-    # TODO: implement
-    pass
-
-
-def get_board_members():
-    # TODO: implement
-    pass
-
-
-def add_board_member():
-    # TODO: implement
-    pass
-
-
-def remove_board_member():
-    # TODO: implement
-    pass
-
-
-def update_board_member_membership():
-    # TODO: implement
-    pass
-
-
-def email_invite_board_member():
-    # TODO: implement
-    pass
-
-
-def get_board_lists(trello: Trello, 
-                    board_id: str,
-                    cards: str = None,
-                    card_fields: Union[str, list] = 'all',
-                    filter: str = 'all',
-                    fields: Union[str, list] = 'all') -> dict:
-    """ Gets all lists from a board
-
-    Args:
-        trello (Trello): Session to trello
-        board_id (str): board-id
-        cards (str, optional): Filter for cards. Either 'all', 'closed', 'none' or 'open'. Defaults to None.
-        card_fields (Union[str, list], optional): Which card fields to return. Either 'all' or list. Defaults to 'all'.
-        filter (str, optional): Filter for lists. Either 'all', 'closed', 'none' or 'open'. Defaults to 'all'.
-        fields (Union[str, list], optional): [description]. Defaults to 'all'.
-
-    Returns:
-        dict: [description] TODO
-    """
-    data = {
-        'cards': cards,
-        'card_fields': card_fields,
-        'filter': filter,
-        'fields': fields
-    }
-    return trello.get(f'boards/{board_id}/lists', json=data).json()
-
-
-def get_board_lists_filtered():
-    # TODO: implement
-    pass
-
-
-def create_board_list():
-    # TODO: implement
-    pass
-
-
-def get_board_card():
-    # TODO: implement
-    pass
-
-
-def get_board_cards():
-    # TODO: implement
-    pass
-
-
-def get_board_cards_filtered():
-    # TODO: implement
-    pass
-
-
-def get_board_stars():
-    # TODO: implement
-    pass
-
-
-def get_board_checklist():
-    # TODO: implement
-    pass
-
-
-def get_board_custom_fields():
-    # TODO: implement
-    pass
-
-
-def get_board_labels():
-    # TODO: implement
-    pass
-
-
-def create_board_label():
-    # TODO: implement
-    pass
-
-
+    board_values = trello.post('boards', json=json).json()
+    return Board(trello, board_values['id'])
