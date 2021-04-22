@@ -2,6 +2,7 @@
 
 
 from .Trello import Trello
+from .Lists import List
 from typing import Union
 
 
@@ -11,6 +12,12 @@ class Board:
     __trello: Trello
 
     def __init__(self, trello: Trello, id: str):
+        """ Board object representing Trello boards
+
+        Args:
+            trello (Trello): Session to Trello
+            id (str): Id of the board
+        """
         self.__id = id
         self.__trello = Trello
 
@@ -82,9 +89,26 @@ class Board:
         pass
 
     def create_list(self,
-                    ):
-        # TODO: implement
-        pass
+                    name: str,
+                    position: Union[str, int] = 'bottom') -> List:
+        """ Creates a new list on the board
+
+        Args:
+            name (str): Name of the list
+            position (Union[str, int], optional): Position of the list. Either 'top', 'bottom' or int. Defaults to 'bottom'.
+
+        Returns:
+            List: List object for further usage
+        """
+
+        json = {
+            'id': self.__id,
+            'name': name,
+            'pos': position
+        }
+
+        result = self.__trello.post(f'boards/{self.__id}/lists')
+        return List(self.__trello, result['id'])
 
     def get_card():
         # TODO: implement
