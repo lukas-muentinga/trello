@@ -108,7 +108,7 @@ class Board:
         }
 
         result = self.__trello.post(f'boards/{self.__id}/lists')
-        return List(self.__trello, result['id'])
+        return List(self.__trello, result)
 
     def get_card():
         # TODO: implement
