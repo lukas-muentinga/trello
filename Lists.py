@@ -25,6 +25,9 @@ class List:
     def name(self):
         return self.__name
 
+    def id(self):
+        return self.__id
+
     def update():
         # TODO: implement
         pass
