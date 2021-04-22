@@ -11,9 +11,9 @@ class Card:
     __trello: Trello
     __id: str
 
-    def __init__(self, trello: Trello, def: dict):
+    def __init__(self, trello: Trello, definition: dict):
         self.__trello = trello
-        self.__id = def['id']
+        self.__id = definition['id']
 
     def update():
         # TODO: implement
