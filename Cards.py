@@ -5,6 +5,165 @@ from datetime import date
 
 from typing import Union
 
+
+class Card:
+
+    __trello: Trello
+    __id: str
+
+    def __init__(self, trello: Trello, def: dict):
+        self.__trello = trello
+        self.__id = def['id']
+
+    def update():
+        # TODO: implement
+        pass
+
+    def delete():
+        # TODO: implement
+        pass
+
+    def get_field():
+        # TODO: implement
+        pass
+
+    def get_action():
+        # TODO: implement
+        pass
+
+    def get_attachments():
+        # TODO: implement
+        pass
+
+    def delete_attachment():
+        # TODO: implement
+        pass
+
+    def get_board():
+        # TODO: implement
+        pass
+
+    def get_checklist_items():
+        # TODO: implement
+        pass
+
+    def update_checklist_item():
+        # TODO: implement
+        pass
+
+    def get_hecklists():
+        # TODO: implement
+        pass
+
+    def create_checklist():
+        # TODO: implement
+        pass
+
+    def delete_checklist():
+        # TODO: implement
+        pass
+
+    def create_checkitem():
+        # TODO: implement
+        pass
+
+    def update_checkitem():
+        # TODO: implement
+        pass
+
+    def delete_checkitem():
+        # TODO: implement
+        pass
+
+    def get_list():
+        # TODO: implement
+        pass
+
+    def get_members():
+        # TODO: implement
+        pass
+
+    def add_member():
+        # TODO: implement
+        pass
+
+    def remove_member():
+        # TODO: implement
+        pass
+
+    def get_voters():
+        # TODO: implement
+        pass
+
+    def add_member_vote():
+        # TODO: implement
+        pass
+
+    def remove_member_vote():
+        # TODO: implement
+        pass
+
+    def get_plugin_data():
+        # TODO: implement
+        pass
+
+    def get_stickers():
+        # TODO: implement
+        pass
+
+    def update_sticker():
+        # TODO: implement
+        pass
+
+    def delete_sticker():
+        # TODO: implement
+        pass
+
+    def add_comment():
+        # TODO: implement
+        pass
+
+    def update_comment():
+        # TODO: implement
+        pass
+
+    def delete_comment():
+        # TODO: implement
+        pass
+
+    def get_custom_field():
+        # TODO: implement
+        pass
+
+    def update_custom_field():
+        # TODO: implement
+        pass
+
+    def add_label():
+        # TODO: implement
+        pass
+
+    def create_label():
+        # TODO: implement
+        pass
+
+    def remove_label():
+        # TODO: implement
+        pass
+
+    def mark_notification_read():
+        # TODO: implement
+        pass
+
+
+######## STATIC METHODS #################
+
+
+def get_card():
+    # TODO: implement
+    pass
+
+
 def create_card(trello: Trello, 
                 list_id: str,
                 name: str = None,
@@ -21,7 +180,7 @@ def create_card(trello: Trello,
                 # map_address: str = None,
                 # map_locationName: str = None,
                 # map_coordinates: str = None
-                ) -> dict:
+                ) -> Card:
     """ Creates a new card
 
     Args:
@@ -39,7 +198,7 @@ def create_card(trello: Trello,
         keep_from_source_card (Union[str, list], optional): Which values should be kept from source card. Either 'all' or list. Defaults to 'all'.
 
     Returns:
-        TODO
+        Card: Card object for further usage
     """
     # TODO: implement parameters: fileSource, address, locationName, coordinates
 
@@ -60,191 +219,5 @@ def create_card(trello: Trello,
         # 'locationName': map_location_name,
         # 'coordinates': map_coordinates
     }
-    return trello.post('cards', json=data).json()
-
-
-def get_card():
-    # TODO: implement
-    pass
-
-
-def update_card():
-    # TODO: implement
-    pass
-
-
-def delete_card():
-    # TODO: implement
-    pass
-
-
-def get_card_field():
-    # TODO: implement
-    pass
-
-
-def get_card_action():
-    # TODO: implement
-    pass
-
-
-def get_card_attachments():
-    # TODO: implement
-    pass
-
-
-def delete_card_attachment():
-    # TODO: implement
-    pass
-
-
-def get_card_board():
-    # TODO: implement
-    pass
-
-
-def get_card_checklist_items():
-    # TODO: implement
-    pass
-
-
-def update_card_checklist_item():
-    # TODO: implement
-    pass
-
-
-def get_card_checklists():
-    # TODO: implement
-    pass
-
-
-def create_card_checklist():
-    # TODO: implement
-    pass
-
-
-def delete_card_checklist():
-    # TODO: implement
-    pass
-
-
-def create_card_checkitem():
-    # TODO: implement
-    pass
-
-
-def update_card_checkitem():
-    # TODO: implement
-    pass
-
-
-def delete_card_checkitem():
-    # TODO: implement
-    pass
-
-
-def get_card_list():
-    # TODO: implement
-    pass
-
-
-def get_card_members():
-    # TODO: implement
-    pass
-
-
-def add_card_member():
-    # TODO: implement
-    pass
-
-
-def remove_card_member():
-    # TODO: implement
-    pass
-
-
-def get_card_voters():
-    # TODO: implement
-    pass
-
-
-def add_card_member_vote():
-    # TODO: implement
-    pass
-
-
-def remove_card_member_vote():
-    # TODO: implement
-    pass
-
-
-def get_card_plugin_data():
-    # TODO: implement
-    pass
-
-
-def get_card_stickers():
-    # TODO: implement
-    pass
-
-
-def update_card_sticker():
-    # TODO: implement
-    pass
-
-
-def add_card_comment():
-    # TODO: implement
-    pass
-
-
-def delete_card_sticker():
-    # TODO: implement
-    pass
-
-
-def add_card_comment():
-    # TODO: implement
-    pass
-
-
-def update_card_comment():
-    # TODO: implement
-    pass
-
-
-def delete_card_comment():
-    # TODO: implement
-    pass
-
-
-def get_card_custom_field():
-    # TODO: implement
-    pass
-
-
-def update_card_custom_field():
-    # TODO: implement
-    pass
-
-
-def add_card_label():
-    # TODO: implement
-    pass
-
-
-def create_card_label():
-    # TODO: implement
-    pass
-
-
-def remove_card_label():
-    # TODO: implement
-    pass
-
-
-def mark_card_notification_read():
-    # TODO: implement
-    pass
-
-
+    card_def = trello.post('cards', json=data).json()
+    return Card(trello, card_def)
