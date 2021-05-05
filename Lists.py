@@ -69,6 +69,9 @@ class List:
         pass
 
 
+# ######## STATIC METHODS
+
+
 def get_list():
     # TODO: implement
     pass
