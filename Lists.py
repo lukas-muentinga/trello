@@ -76,7 +76,6 @@ class List:
 
 
     def create_card(self,
-                    trello: Trello,
                     name: str = None,
                     description: str = None,
                     position: Union[str, int] = 'bottom',
@@ -130,8 +129,8 @@ class List:
             # 'locationName': map_location_name,
             # 'coordinates': map_coordinates
         }
-        card_def = trello.post('cards', json=data).json()
-        return Card(trello, card_def)
+        card_def = self.__trello.post('cards', json=data).json()
+        return Card(self.__trello, card_def)
 
 
 # ######## STATIC METHODS
