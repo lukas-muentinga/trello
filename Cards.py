@@ -1,6 +1,7 @@
 """ Methods for manipulating cards based on https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-post """
 
 from .Trello import Trello
+from .Checklists import Checklist
 from datetime import date
 
 from typing import Union
@@ -51,13 +52,32 @@ class Card:
         # TODO: implement
         pass
 
-    def get_hecklists():
+    def get_checklists():
         # TODO: implement
         pass
 
-    def create_checklist():
-        # TODO: implement
-        pass
+    def create_checklist(self,
+                         name: str,
+                         source_checklist_id: str = None,
+                         position: Union(str, int) = 'bottom') -> Checklist:
+        """ Creates a new checklist on the card
+
+        Args:
+            name (str): Name of the checklist
+            source_checklist_id (str, optional): id of a checklist to copy from. Defaults to None.
+            position (str or int, optional): Position of the checklist. Either 'top', 'bottom' or int.
+                Defaults to 'bottom'.
+
+        Returns:
+            Checklist: Checklist object.
+        """
+        data = {
+            'name': name,
+            'idChecklistSource': source_checklist_id,
+            'pos': position,
+        }
+        checklist_def = self.__trello.post(f'cards/{self.__id}/checklists', json=data).json()
+        return Checklist(self.__trello, checklist_def)
 
     def delete_checklist():
         # TODO: implement
