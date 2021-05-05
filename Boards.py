@@ -107,7 +107,7 @@ class Board:
             'pos': position
         }
 
-        result = self.__trello.post(f'boards/{self.__id}/lists')
+        result = self.__trello.post(f'boards/{self.__id}/lists', json=json).json()
         return List(self.__trello, result)
 
     def get_card():

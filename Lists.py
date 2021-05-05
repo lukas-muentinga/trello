@@ -12,7 +12,7 @@ class List:
     __name: str
     __trello: Trello
 
-    def __init__(self, trello: Trello, def: dict):
+    def __init__(self, trello: Trello, definition: dict):
         """ List object for lists in Trello boards.
 
         Args:
@@ -20,8 +20,8 @@ class List:
             id (str): Id of the list
         """
         self.__trello = trello
-        self.__id = def['id']
-        self.__name = def['name']
+        self.__id = definition['id']
+        self.__name = definition['name']
 
     def name(self):
         return self.__name
